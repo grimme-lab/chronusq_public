@@ -8,4 +8,6 @@
 doc
 *.*.swp
 *~
+.vscode
+ExchCXX
 
