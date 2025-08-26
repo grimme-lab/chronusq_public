@@ -127,7 +127,7 @@ namespace ChronusQ {
 
   public:
   
-    PBE38() : GGA(HYB_GGA_XC_PBE38) { }
+    PBE38() : GGA(XC_HYB_GGA_XC_PBE38) { }
 
   }; // class PBE38 hybrid
 
