@@ -178,8 +178,8 @@ namespace ChronusQ {
     scfControls.eneConvTol = scfControls.rmsdPConvTol*100;
 
     // Energy convergence tolerance
-    //OPTOPT( scfControls.eneConvTol =
-    //          input.getData<double>("SCF.ENETOL"); )
+    OPTOPT( scfControls.eneConvTol =
+              input.getData<double>("SCF.ENETOL"); )
 
     // Energy convergence tolerance
     //OPTOPT( scfControls.denConvTol =

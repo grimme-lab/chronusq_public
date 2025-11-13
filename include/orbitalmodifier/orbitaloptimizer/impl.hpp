@@ -145,7 +145,7 @@ template <typename MatsT>
 void OrbitalOptimizer<MatsT>::printRunHeader(std::ostream& out, EMPerturbation& pert) const {
 
   out << BannerTop << std::endl;
-  out << "Self Consistent Field (SCF) Settings:" << std::endl << std::endl;
+  out << "Self Consistent Field (SCF old) Settings:" << std::endl << std::endl;
 
   out << std::setw(38) << std::left << "  Reference:" << scfControls.refLongName_ << std::endl;
 
@@ -318,7 +318,7 @@ bool OrbitalOptimizer<MatsT>::evaluateProgress(EMPerturbation& pert) {
       isConverged = energyConv and denConv;
 
       // Toggle damping based on energy difference
-      if(scfControls.doDamp ) {
+      if(scfControls.doDamp && this->scfConv.nSCFIter > 0) {
         bool largeEDiff = std::abs(this->scfConv.deltaEnergy) > scfControls.dampError;
 
         if( doingDamp and not largeEDiff and scfControls.dampParam > 0. ) {

@@ -326,7 +326,7 @@ bool OrbitalOptimizerNew<singleSlaterT,MatsT,IntsT>::evaluateProgress(EMPerturba
       isConverged = energyConv and denConv;
 
       // Toggle damping based on energy difference
-      if(scfControls.doDamp ) {
+      if(scfControls.doDamp && this->scfConv.nSCFIter > 0) {
         bool largeEDiff = std::abs(this->scfConv.deltaEnergy) > scfControls.dampError;
 
         if( doingDamp and not largeEDiff and scfControls.dampParam > 0. ) {

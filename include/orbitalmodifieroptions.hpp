@@ -168,7 +168,7 @@ namespace ChronusQ {
 
     // Static Damping settings
     bool   doDamp         = false;           ///< Flag for turning on damping
-    double dampStartParam = 0.7;            ///< Starting damping parameter
+    double dampStartParam = 0.9;            ///< Starting damping parameter
     double dampParam      = dampStartParam; ///< Current Damp parameter
     double dampError      = 1e-3; ///< Energy oscillation to turn off damp
 
