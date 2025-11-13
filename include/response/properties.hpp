@@ -335,6 +335,7 @@ namespace ChronusQ {
 
 
     int edlOff = getOpOffset(LenElectricDipole);
+    int eqlOff = getOpOffset(LenElectricQuadrupole);
     int mdOff  = getOpOffset(MagneticDipole);
 
 
@@ -407,6 +408,59 @@ namespace ChronusQ {
       if( savFile.exists() )
         savFile.safeWriteData("/RESP/FDR/EQ_ED_POLARIZABILITY_LENGTH",
           results.eq_ed_Polar, {nOmega,3,6});
+
+    }
+
+    // Electric Quadrupole - Electric Quadrupole Polarizability (Len)
+    if( AHasEQL and BHasEQL ) {
+
+
+      results.eq_eq_Polar =
+        CQMemManager::get().malloc<U>(6*6*nOmega);
+
+      for(auto iOmega = 0; iOmega < nOmega; iOmega++) {
+
+        SetMat('N',6,6,U(1.),
+          opMap[LenElectricQuadrupole] + eqlOff + nRHS*iOmega,
+          nRHS*nOmega, results.eq_eq_Polar + iOmega*6*6, 6);
+
+
+        // Make traceless along the bra (A) quadrupole components
+        U* qqStart = results.eq_eq_Polar + iOmega*6*6;
+
+        for(auto row = 0; row < 6; row++) {
+
+          U qTrace = qqStart[row + 0*6] +
+                     qqStart[row + 3*6] +
+                     qqStart[row + 5*6];
+
+          qqStart[row + 0*6] -= qTrace / 3.;
+          qqStart[row + 3*6] -= qTrace / 3.;
+          qqStart[row + 5*6] -= qTrace / 3.;
+
+        }
+
+        // Make traceless along the ket (B) quadrupole components
+        for(auto col = 0; col < 6; col++) {
+
+          U qTrace = qqStart[0 + col*6] +
+                     qqStart[3 + col*6] +
+                     qqStart[5 + col*6];
+
+          qqStart[0 + col*6] -= qTrace / 3.;
+          qqStart[3 + col*6] -= qTrace / 3.;
+          qqStart[5 + col*6] -= qTrace / 3.;
+
+        }
+
+        // Store with first operator components along the leading dimension
+        IMatCopy('T',6,6,U(1.),qqStart,6,6);
+
+      }
+
+      if( savFile.exists() )
+        savFile.safeWriteData("/RESP/FDR/EQ_EQ_POLARIZABILITY_LENGTH",
+          results.eq_eq_Polar, {nOmega,6,6});
 
     }
 
@@ -512,4 +566,3 @@ namespace ChronusQ {
 
 
 }; // namespace ChronusQ
-
