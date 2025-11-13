@@ -222,8 +222,11 @@ namespace ChronusQ {
       dfdrResults.shifts.clear();
 
       for(auto &omega : fdrSettings.bFreq) {
-        fdrResults. shifts.emplace_back(omega);
-        dfdrResults.shifts.emplace_back(omega,fdrSettings.dampFactor);
+        // fdrResults. shifts.emplace_back(omega);
+        // dfdrResults.shifts.emplace_back(omega,fdrSettings.dampFactor);
+
+        fdrResults.shifts.emplace_back(0.0);
+        dfdrResults.shifts.emplace_back(0.0, omega);
       }
 
     };
