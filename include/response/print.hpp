@@ -509,8 +509,7 @@ auto printOO = [&](std::function<void(U)> printRec, U* oo_polar) -> void {
     }
 
 
-// Finally, add the actual print block alongside the others:
-if (results.eq_eq_Polar) {   // <-- adjust the field name if yours differs
+if (results.eq_eq_Polar) {
   out << "  Electric Quadrupole - Electric Quadrupole (Length) : "
          "- Re[<< r_i r_j; r_k r_l >>] (AU)\n\n\n";
   printQQ(printRecRe, results.eq_eq_Polar);

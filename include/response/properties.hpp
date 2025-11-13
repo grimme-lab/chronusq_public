@@ -114,9 +114,6 @@ namespace ChronusQ {
           resResults.tLenElecDipole_ge, {resSettings.nRoots,3});
     }
 
-
-
-
     // Electric Quadrupole (Length)
     if( opMap.find(LenElectricQuadrupole) != opMap.end() ) {
 
@@ -130,9 +127,6 @@ namespace ChronusQ {
           "/RESP/RESIDUE/TRANSITION_ELECTRIC_QUADRUPOLE_LENGTH",
           resResults.tLenElecQuadrupole_ge, {resSettings.nRoots, 6});
     }
-
-
-
 
     // Electric Octupole (Length)
     if( opMap.find(LenElectricOctupole) != opMap.end() ) {
@@ -336,6 +330,7 @@ namespace ChronusQ {
 
     int edlOff = getOpOffset(LenElectricDipole);
     int eqlOff = getOpOffset(LenElectricQuadrupole);
+    int eolOff = getOpOffset(LenElectricOctupole);
     int mdOff  = getOpOffset(MagneticDipole);
 
 
@@ -467,6 +462,94 @@ namespace ChronusQ {
 
 
 
+
+    // Electric Octupole - Electric Dipole Polarizability (Len)
+    if( AHasEOL and BHasEDL ) {
+
+
+      results.eo_ed_Polar =
+        CQMemManager::get().malloc<U>(10*3*nOmega);
+
+      for(auto iOmega = 0; iOmega < nOmega; iOmega++) {
+
+        SetMat('N',3,10,U(1.),
+          opMap[LenElectricOctupole] + edlOff + nRHS*iOmega,
+          nRHS*nOmega, results.eo_ed_Polar + iOmega*10*3 ,3);
+
+
+        // Store with the octupole components along the leading dimension
+        U* oeStart = results.eo_ed_Polar + iOmega*10*3;
+        IMatCopy('T',3,10,U(1.),oeStart,3,10);
+
+      }
+
+      if( savFile.exists() )
+        savFile.safeWriteData("/RESP/FDR/EO_ED_POLARIZABILITY_LENGTH",
+          results.eo_ed_Polar, {nOmega,10,3});
+
+    }
+
+    // Electric Octupole - Electric Quadrupole Polarizability (Len)
+    if( AHasEOL and BHasEQL ) {
+
+      results.eo_eq_Polar =
+        CQMemManager::get().malloc<U>(10*6*nOmega);
+
+      for(auto iOmega = 0; iOmega < nOmega; iOmega++) {
+
+        SetMat('N',6,10,U(1.),
+          opMap[LenElectricOctupole] + eqlOff + nRHS*iOmega,
+          nRHS*nOmega, results.eo_eq_Polar + iOmega*10*6 ,6);
+
+        // Make traceless along the quadrupole (B) components
+        U* oqStart = results.eo_eq_Polar + iOmega*10*6;
+
+        for(auto col = 0; col < 10; col++) {
+
+          U qTrace = oqStart[0 + col*6] +
+                     oqStart[3 + col*6] +
+                     oqStart[5 + col*6];
+
+          oqStart[0 + col*6] -= qTrace / 3.;
+          oqStart[3 + col*6] -= qTrace / 3.;
+          oqStart[5 + col*6] -= qTrace / 3.;
+
+        }
+
+        // Store with octupole components along the leading dimension
+        IMatCopy('T',6,10,U(1.),oqStart,6,10);
+
+      }
+
+      if( savFile.exists() )
+        savFile.safeWriteData("/RESP/FDR/EO_EQ_POLARIZABILITY_LENGTH",
+          results.eo_eq_Polar, {nOmega,10,6});
+
+    }
+
+    // Electric Octupole - Electric Octupole Polarizability (Len)
+    if( AHasEOL and BHasEOL ) {
+
+      results.eo_eo_Polar =
+        CQMemManager::get().malloc<U>(10*10*nOmega);
+
+      for(auto iOmega = 0; iOmega < nOmega; iOmega++) {
+
+        SetMat('N',10,10,U(1.),
+          opMap[LenElectricOctupole] + eolOff + nRHS*iOmega,
+          nRHS*nOmega, results.eo_eo_Polar + iOmega*10*10 ,10);
+
+        // Store with octupole components along the leading dimension
+        U* ooStart = results.eo_eo_Polar + iOmega*10*10;
+        IMatCopy('T',10,10,U(1.),ooStart,10,10);
+
+      }
+
+      if( savFile.exists() )
+        savFile.safeWriteData("/RESP/FDR/EO_EO_POLARIZABILITY_LENGTH",
+          results.eo_eo_Polar, {nOmega,10,10});
+
+    }
 
     // Magnetic Dipole - Electric Dipole Polarizability (Len)
     if( AHasMD and BHasEDL ) {
