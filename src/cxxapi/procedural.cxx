@@ -403,10 +403,10 @@ namespace ChronusQ {
             compute_X2C_CoreH_Fock( mol, *basis, aoints, emPert, ss, ssOptions);
           }
           ss->formCoreH(emPert, true);
-          //if(firstStep) ss->formGuess(guessSSOptions);
-          //ss->runSCF(emPert);
+          if(firstStep) ss->formGuess(guessSSOptions);
+          ss->runSCF(emPert);
 
-#if 1 // new SCF
+#if 0 // new SCF
           std::shared_ptr<OrbitalModifierNewBase> conventionalSCF = nullptr;
           bool found = false;
           #define CONSTRUCT_NEWSCF(_ssT,_MatsT,_IntsT)             \
