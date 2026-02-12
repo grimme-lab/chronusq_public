@@ -287,43 +287,51 @@ namespace ChronusQ {
      "                        { << YZ; X >>, << YZ; Y >>, << YZ; Z >> }\n"
      "                        { << ZZ; X >>, << ZZ; Y >>, << ZZ; Z >> }\n";
 
-
-std::string eqeqHelper =
- "                        { << XX; XX >>, << XX; XY >>, << XX; XZ >>, << XX; YY >>, << XX; YZ >>, << XX; ZZ >> }\n"
- "                        { << XY; XX >>, << XY; XY >>, << XY; XZ >>, << XY; YY >>, << XY; YZ >>, << XY; ZZ >> }\n"
- "                        { << XZ; XX >>, << XZ; XY >>, << XZ; XZ >>, << XZ; YY >>, << XZ; YZ >>, << XZ; ZZ >> }\n"
- "                        { << YY; XX >>, << YY; XY >>, << YY; XZ >>, << YY; YY >>, << YY; YZ >>, << YY; ZZ >> }\n"
- "                        { << YZ; XX >>, << YZ; XY >>, << YZ; XZ >>, << YZ; YY >>, << YZ; YZ >>, << YZ; ZZ >> }\n"
- "                        { << ZZ; XX >>, << ZZ; XY >>, << ZZ; XZ >>, << ZZ; YY >>, << ZZ; YZ >>, << ZZ; ZZ >> }\n";
+    std::string eqeqHelper =
+     "                        { << XX; XX >>, << XX; XY >>, << XX; XZ >>, << XX; YY >>, << XX; YZ >>, << XX; ZZ >> }\n"
+     "                        { << XY; XX >>, << XY; XY >>, << XY; XZ >>, << XY; YY >>, << XY; YZ >>, << XY; ZZ >> }\n"
+     "                        { << XZ; XX >>, << XZ; XY >>, << XZ; XZ >>, << XZ; YY >>, << XZ; YZ >>, << XZ; ZZ >> }\n"
+     "                        { << YY; XX >>, << YY; XY >>, << YY; XZ >>, << YY; YY >>, << YY; YZ >>, << YY; ZZ >> }\n"
+     "                        { << YZ; XX >>, << YZ; XY >>, << YZ; XZ >>, << YZ; YY >>, << YZ; YZ >>, << YZ; ZZ >> }\n"
+     "                        { << ZZ; XX >>, << ZZ; XY >>, << ZZ; XZ >>, << ZZ; YY >>, << ZZ; YZ >>, << ZZ; ZZ >> }\n";
 
 // 10-component octupole ordering used elsewhere in your code:
 // { XXX, XXY, XXZ, XYY, XYZ, XZZ, YYY, YYZ, YZZ, ZZZ }
-std::string eodeHelper =
- "                        { << XXX; X >>, << XXX; Y >>, << XXX; Z >> }\n"
- "                        { << XXY; X >>, << XXY; Y >>, << XXY; Z >> }\n"
- "                        { << XXZ; X >>, << XXZ; Y >>, << XXZ; Z >> }\n"
- "                        { << XYY; X >>, << XYY; Y >>, << XYY; Z >> }\n"
- "                        { << XYZ; X >>, << XYZ; Y >>, << XYZ; Z >> }\n"
- "                        { << XZZ; X >>, << XZZ; Y >>, << XZZ; Z >> }\n"
- "                        { << YYY; X >>, << YYY; Y >>, << YYY; Z >> }\n"
- "                        { << YYZ; X >>, << YYZ; Y >>, << YYZ; Z >> }\n"
- "                        { << YZZ; X >>, << YZZ; Y >>, << YZZ; Z >> }\n"
- "                        { << ZZZ; X >>, << ZZZ; Y >>, << ZZZ; Z >> }\n";
+    std::string eodeHelper =
+     "                        { << XXX; X >>, << XXX; Y >>, << XXX; Z >> }\n"
+     "                        { << XXY; X >>, << XXY; Y >>, << XXY; Z >> }\n"
+     "                        { << XXZ; X >>, << XXZ; Y >>, << XXZ; Z >> }\n"
+     "                        { << XYY; X >>, << XYY; Y >>, << XYY; Z >> }\n"
+     "                        { << XYZ; X >>, << XYZ; Y >>, << XYZ; Z >> }\n"
+     "                        { << XZZ; X >>, << XZZ; Y >>, << XZZ; Z >> }\n"
+     "                        { << YYY; X >>, << YYY; Y >>, << YYY; Z >> }\n"
+     "                        { << YYZ; X >>, << YYZ; Y >>, << YYZ; Z >> }\n"
+     "                        { << YZZ; X >>, << YZZ; Y >>, << YZZ; Z >> }\n"
+     "                        { << ZZZ; X >>, << ZZZ; Y >>, << ZZZ; Z >> }\n";
 
-std::string eoeqHelper =
- "                        { << XXX; XX >>, << XXX; XY >>, << XXX; XZ >>, << XXX; YY >>, << XXX; YZ >>, << XXX; ZZ >> }\n"
- "                        { << XXY; XX >>, << XXY; XY >>, << XXY; XZ >>, << XXY; YY >>, << XXY; YZ >>, << XXY; ZZ >> }\n"
- "                        { << XXZ; XX >>, << XXZ; XY >>, << XXZ; XZ >>, << XXZ; YY >>, << XXZ; YZ >>, << XXZ; ZZ >> }\n"
- "                        { << XYY; XX >>, << XYY; XY >>, << XYY; XZ >>, << XYY; YY >>, << XYY; YZ >>, << XYY; ZZ >> }\n"
- "                        { << XYZ; XX >>, << XYZ; XY >>, << XYZ; XZ >>, << XYZ; YY >>, << XYZ; YZ >>, << XYZ; ZZ >> }\n"
- "                        { << XZZ; XX >>, << XZZ; XY >>, << XZZ; XZ >>, << XZZ; YY >>, << XZZ; YZ >>, << XZZ; ZZ >> }\n"
- "                        { << YYY; XX >>, << YYY; XY >>, << YYY; XZ >>, << YYY; YY >>, << YYY; YZ >>, << YYY; ZZ >> }\n"
- "                        { << YYZ; XX >>, << YYZ; XY >>, << YYZ; XZ >>, << YYZ; YY >>, << YYZ; YZ >>, << YYZ; ZZ >> }\n"
- "                        { << YZZ; XX >>, << YZZ; XY >>, << YZZ; XZ >>, << YZZ; YY >>, << YZZ; YZ >>, << YZZ; ZZ >> }\n"
- "                        { << ZZZ; XX >>, << ZZZ; XY >>, << ZZZ; XZ >>, << ZZZ; YY >>, << ZZZ; YZ >>, << ZZZ; ZZ >> }\n";
+    std::string eoeqHelper =
+    "                        { << XXX; XX >>, << XXX; XY >>, << XXX; XZ >>, << XXX; YY >>, << XXX; YZ >>, << XXX; ZZ >> }\n"
+    "                        { << XXY; XX >>, << XXY; XY >>, << XXY; XZ >>, << XXY; YY >>, << XXY; YZ >>, << XXY; ZZ >> }\n"
+    "                        { << XXZ; XX >>, << XXZ; XY >>, << XXZ; XZ >>, << XXZ; YY >>, << XXZ; YZ >>, << XXZ; ZZ >> }\n"
+    "                        { << XYY; XX >>, << XYY; XY >>, << XYY; XZ >>, << XYY; YY >>, << XYY; YZ >>, << XYY; ZZ >> }\n"
+    "                        { << XYZ; XX >>, << XYZ; XY >>, << XYZ; XZ >>, << XYZ; YY >>, << XYZ; YZ >>, << XYZ; ZZ >> }\n"
+    "                        { << XZZ; XX >>, << XZZ; XY >>, << XZZ; XZ >>, << XZZ; YY >>, << XZZ; YZ >>, << XZZ; ZZ >> }\n"
+    "                        { << YYY; XX >>, << YYY; XY >>, << YYY; XZ >>, << YYY; YY >>, << YYY; YZ >>, << YYY; ZZ >> }\n"
+    "                        { << YYZ; XX >>, << YYZ; XY >>, << YYZ; XZ >>, << YYZ; YY >>, << YYZ; YZ >>, << YYZ; ZZ >> }\n"
+    "                        { << YZZ; XX >>, << YZZ; XY >>, << YZZ; XZ >>, << YZZ; YY >>, << YZZ; YZ >>, << YZZ; ZZ >> }\n"
+    "                        { << ZZZ; XX >>, << ZZZ; XY >>, << ZZZ; XZ >>, << ZZZ; YY >>, << ZZZ; YZ >>, << ZZZ; ZZ >> }\n";
 
-std::string eoeoHelper =
- "                        { XXX, XXY, XXZ, XYY, XYZ, XZZ, YYY, YYZ, YZZ, ZZZ }  (rows & cols)\n";
+    std::string eoeoHelper =
+    "                        { << XXX; XXX >>, << XXX; XXY >>, << XXX; XXZ >>, << XXX; XYY >>, << XXX; XYZ >>, << XXX; XZZ >>, << XXX; YYY >>, << XXX; YYZ >>, << XXX; YZZ >>, << XXX; ZZZ >> }\n"
+    "                        { << XXY; XXX >>, << XXY; XXY >>, << XXY; XXZ >>, << XXY; XYY >>, << XXY; XYZ >>, << XXY; XZZ >>, << XXY; YYY >>, << XXY; YYZ >>, << XXY; YZZ >>, << XXY; ZZZ >> }\n"
+    "                        { << XXZ; XXX >>, << XXZ; XXY >>, << XXZ; XXZ >>, << XXZ; XYY >>, << XXZ; XYZ >>, << XXZ; XZZ >>, << XXZ; YYY >>, << XXZ; YYZ >>, << XXZ; YZZ >>, << XXZ; ZZZ >> }\n"
+    "                        { << XYY; XXX >>, << XYY; XXY >>, << XYY; XXZ >>, << XYY; XYY >>, << XYY; XYZ >>, << XYY; XZZ >>, << XYY; YYY >>, << XYY; YYZ >>, << XYY; YZZ >>, << XYY; ZZZ >> }\n"
+    "                        { << XYZ; XXX >>, << XYZ; XXY >>, << XYZ; XXZ >>, << XYZ; XYY >>, << XYZ; XYZ >>, << XYZ; XZZ >>, << XYZ; YYY >>, << XYZ; YYZ >>, << XYZ; YZZ >>, << XYZ; ZZZ >> }\n"
+    "                        { << XZZ; XXX >>, << XZZ; XXY >>, << XZZ; XXZ >>, << XZZ; XYY >>, << XZZ; XYZ >>, << XZZ; XZZ >>, << XZZ; YYY >>, << XZZ; YYZ >>, << XZZ; YZZ >>, << XZZ; ZZZ >> }\n"
+    "                        { << YYY; XXX >>, << YYY; XXY >>, << YYY; XXZ >>, << YYY; XYY >>, << YYY; XYZ >>, << YYY; XZZ >>, << YYY; YYY >>, << YYY; YYZ >>, << YYY; YZZ >>, << YYY; ZZZ >> }\n"
+    "                        { << YYZ; XXX >>, << YYZ; XXY >>, << YYZ; XXZ >>, << YYZ; XYY >>, << YYZ; XYZ >>, << YYZ; XZZ >>, << YYZ; YYY >>, << YYZ; YYZ >>, << YYZ; YZZ >>, << YYZ; ZZZ >> }\n"
+    "                        { << YZZ; XXX >>, << YZZ; XXY >>, << YZZ; XXZ >>, << YZZ; XYY >>, << YZZ; XYZ >>, << YZZ; XZZ >>, << YZZ; YYY >>, << YZZ; YYZ >>, << YZZ; YZZ >>, << YZZ; ZZZ >> }\n"
+    "                        { << ZZZ; XXX >>, << ZZZ; XXY >>, << ZZZ; XXZ >>, << ZZZ; XYY >>, << ZZZ; XYZ >>, << ZZZ; XZZ >>, << ZZZ; YYY >>, << ZZZ; YYZ >>, << ZZZ; YZZ >>, << ZZZ; ZZZ >> }\n";
 
 
     // Print out a D-D Polarizability
@@ -389,89 +397,89 @@ std::string eoeoHelper =
     };
 
 
-// Add a 6x6 printer (layout matches your EQ–ED stride pattern: row + 6*col)
-auto printQQ = [&]( std::function<void(U)> printRec, U* qq_polar ) -> void {
-  out << eqeqHelper << std::endl;
-  for (auto iOmega = 0; iOmega < nOmega; iOmega++) {
+    // Add a 6x6 printer (layout matches your EQ–ED stride pattern: row + 6*col)
+    auto printQQ = [&]( std::function<void(U)> printRec, U* qq_polar ) -> void {
+      out << eqeqHelper << std::endl;
+      for (auto iOmega = 0; iOmega < nOmega; iOmega++) {
 
-    double omega = fdrSettings.bFreq[iOmega];
-    U* qq = qq_polar + iOmega * 36; // 6 * 6 per frequency
+        double omega = fdrSettings.bFreq[iOmega];
+        U* qq = qq_polar + iOmega * 36; // 6 * 6 per frequency
 
-    out << "    " << "W(AU) = " << std::setw(8) << std::setprecision(4)
-        << std::fixed << std::left << omega;
+        out << "    " << "W(AU) = " << std::setw(8) << std::setprecision(4)
+            << std::fixed << std::left << omega;
 
-    // row 0: XX vs {XX,XY,XZ,YY,YZ,ZZ}
-    printRec(qq[0  + 6*0]); printRec(qq[0  + 6*1]); printRec(qq[0  + 6*2]);
-    printRec(qq[0  + 6*3]); printRec(qq[0  + 6*4]); printRec(qq[0  + 6*5]);
+        // row 0: XX vs {XX,XY,XZ,YY,YZ,ZZ}
+        printRec(qq[0  + 6*0]); printRec(qq[0  + 6*1]); printRec(qq[0  + 6*2]);
+        printRec(qq[0  + 6*3]); printRec(qq[0  + 6*4]); printRec(qq[0  + 6*5]);
 
-    // rows 1..5
-    auto row = [&](int r){
-      out << "\n" << "    " << "        " << std::setw(8) << " ";
-      printRec(qq[r + 6*0]); printRec(qq[r + 6*1]); printRec(qq[r + 6*2]);
-      printRec(qq[r + 6*3]); printRec(qq[r + 6*4]); printRec(qq[r + 6*5]);
+        // rows 1..5
+        auto row = [&](int r){
+          out << "\n" << "    " << "        " << std::setw(8) << " ";
+          printRec(qq[r + 6*0]); printRec(qq[r + 6*1]); printRec(qq[r + 6*2]);
+          printRec(qq[r + 6*3]); printRec(qq[r + 6*4]); printRec(qq[r + 6*5]);
+        };
+        row(1); row(2); row(3); row(4); row(5);
+
+        out << "\n\n";
+      }
+      out << "\n\n\n\n";
     };
-    row(1); row(2); row(3); row(4); row(5);
 
-    out << "\n\n";
-  }
-  out << "\n\n\n\n";
-};
-
-// 10 x 3 (EO–ED)
-auto printOE = [&](std::function<void(U)> printRec, U* oe_polar) -> void {
-  out << eodeHelper << std::endl;
-  for (auto iOmega = 0; iOmega < nOmega; iOmega++) {
-    double omega = fdrSettings.bFreq[iOmega];
-    U* oe = oe_polar + iOmega * 10 * 3; // 30 per frequency
-    out << "    " << "W(AU) = " << std::setw(8) << std::setprecision(4)
-        << std::fixed << std::left << omega;
-    auto row = [&](int r){
-      if (r > 0) out << "\n" << "    " << "        " << std::setw(8) << " ";
-      // columns: X(0), Y(1), Z(2)
-      printRec(oe[r + 10*0]); printRec(oe[r + 10*1]); printRec(oe[r + 10*2]);
+    // 10 x 3 (EO–ED)
+    auto printOE = [&](std::function<void(U)> printRec, U* oe_polar) -> void {
+      out << eodeHelper << std::endl;
+      for (auto iOmega = 0; iOmega < nOmega; iOmega++) {
+        double omega = fdrSettings.bFreq[iOmega];
+        U* oe = oe_polar + iOmega * 10 * 3; // 30 per frequency
+        out << "    " << "W(AU) = " << std::setw(8) << std::setprecision(4)
+            << std::fixed << std::left << omega;
+        auto row = [&](int r){
+          if (r > 0) out << "\n" << "    " << "        " << std::setw(8) << " ";
+          // columns: X(0), Y(1), Z(2)
+          printRec(oe[r + 10*0]); printRec(oe[r + 10*1]); printRec(oe[r + 10*2]);
+        };
+        for (int r = 0; r < 10; ++r) row(r);
+        out << "\n\n";
+      }
+      out << "\n\n\n\n";
     };
-    for (int r = 0; r < 10; ++r) row(r);
-    out << "\n\n";
-  }
-  out << "\n\n\n\n";
-};
 
-// 10 x 6 (EO–EQ)
-auto printOQ = [&](std::function<void(U)> printRec, U* oq_polar) -> void {
-  out << eoeqHelper << std::endl;
-  for (auto iOmega = 0; iOmega < nOmega; iOmega++) {
-    double omega = fdrSettings.bFreq[iOmega];
-    U* oq = oq_polar + iOmega * 10 * 6; // 60 per frequency
-    out << "    " << "W(AU) = " << std::setw(8) << std::setprecision(4)
-        << std::fixed << std::left << omega;
-    auto row = [&](int r){
-      if (r > 0) out << "\n" << "    " << "        " << std::setw(8) << " ";
-      // columns: {XX, XY, XZ, YY, YZ, ZZ} -> col 0..5
-      for (int c = 0; c < 6; ++c) printRec(oq[r + 10*c]);
+    // 10 x 6 (EO–EQ)
+    auto printOQ = [&](std::function<void(U)> printRec, U* oq_polar) -> void {
+      out << eoeqHelper << std::endl;
+      for (auto iOmega = 0; iOmega < nOmega; iOmega++) {
+        double omega = fdrSettings.bFreq[iOmega];
+        U* oq = oq_polar + iOmega * 10 * 6; // 60 per frequency
+        out << "    " << "W(AU) = " << std::setw(8) << std::setprecision(4)
+            << std::fixed << std::left << omega;
+        auto row = [&](int r){
+          if (r > 0) out << "\n" << "    " << "        " << std::setw(8) << " ";
+          // columns: {XX, XY, XZ, YY, YZ, ZZ} -> col 0..5
+          for (int c = 0; c < 6; ++c) printRec(oq[r + 10*c]);
+        };
+        for (int r = 0; r < 10; ++r) row(r);
+        out << "\n\n";
+      }
+      out << "\n\n\n\n";
     };
-    for (int r = 0; r < 10; ++r) row(r);
-    out << "\n\n";
-  }
-  out << "\n\n\n\n";
-};
 
-// 10 x 10 (EO–EO)
-auto printOO = [&](std::function<void(U)> printRec, U* oo_polar) -> void {
-  out << eoeoHelper << std::endl;
-  for (auto iOmega = 0; iOmega < nOmega; iOmega++) {
-    double omega = fdrSettings.bFreq[iOmega];
-    U* oo = oo_polar + iOmega * 10 * 10; // 100 per frequency
-    out << "    " << "W(AU) = " << std::setw(8) << std::setprecision(4)
-        << std::fixed << std::left << omega;
-    auto row = [&](int r){
-      if (r > 0) out << "\n" << "    " << "        " << std::setw(8) << " ";
-      for (int c = 0; c < 10; ++c) printRec(oo[r + 10*c]);
+    // 10 x 10 (EO–EO)
+    auto printOO = [&](std::function<void(U)> printRec, U* oo_polar) -> void {
+      out << eoeoHelper << std::endl;
+      for (auto iOmega = 0; iOmega < nOmega; iOmega++) {
+        double omega = fdrSettings.bFreq[iOmega];
+        U* oo = oo_polar + iOmega * 10 * 10; // 100 per frequency
+        out << "    " << "W(AU) = " << std::setw(8) << std::setprecision(4)
+            << std::fixed << std::left << omega;
+        auto row = [&](int r){
+          if (r > 0) out << "\n" << "    " << "        " << std::setw(8) << " ";
+          for (int c = 0; c < 10; ++c) printRec(oo[r + 10*c]);
+        };
+        for (int r = 0; r < 10; ++r) row(r);
+        out << "\n\n";
+      }
+      out << "\n\n\n\n";
     };
-    for (int r = 0; r < 10; ++r) row(r);
-    out << "\n\n";
-  }
-  out << "\n\n\n\n";
-};
 
 
 
@@ -509,53 +517,53 @@ auto printOO = [&](std::function<void(U)> printRec, U* oo_polar) -> void {
     }
 
 
-if (results.eq_eq_Polar) {
-  out << "  Electric Quadrupole - Electric Quadrupole (Length) : "
-         "- Re[<< r_i r_j; r_k r_l >>] (AU)\n\n\n";
-  printQQ(printRecRe, results.eq_eq_Polar);
+    if (results.eq_eq_Polar) {
+      out << "  Electric Quadrupole - Electric Quadrupole (Length) : "
+            "- Re[<< r_i r_j; r_k r_l >>] (AU)\n\n\n";
+      printQQ(printRecRe, results.eq_eq_Polar);
 
-  if (std::is_same<U,dcomplex>::value) {
-    out << "  Electric Quadrupole - Electric Quadrupole (Length) : "
-           "- Im[<< r_i r_j; r_k r_l >>] (AU)\n\n\n";
-    printQQ(printRecIm, results.eq_eq_Polar);
-  }
-}
+      if (std::is_same<U,dcomplex>::value) {
+        out << "  Electric Quadrupole - Electric Quadrupole (Length) : "
+              "- Im[<< r_i r_j; r_k r_l >>] (AU)\n\n\n";
+        printQQ(printRecIm, results.eq_eq_Polar);
+      }
+    }
 
-if (results.eo_ed_Polar) {
-  out << "  Electric Octupole - Electric Dipole (Length) : "
-         "- Re[<< r_i r_j r_k; r_l >>] (AU)\n\n\n";
-  printOE(printRecRe, results.eo_ed_Polar);
+    if (results.eo_ed_Polar) {
+      out << "  Electric Octupole - Electric Dipole (Length) : "
+            "- Re[<< r_i r_j r_k; r_l >>] (AU)\n\n\n";
+      printOE(printRecRe, results.eo_ed_Polar);
 
-  if (std::is_same<U,dcomplex>::value) {
-    out << "  Electric Octupole - Electric Dipole (Length) : "
-           "- Im[<< r_i r_j r_k; r_l >>] (AU)\n\n\n";
-    printOE(printRecIm, results.eo_ed_Polar);
-  }
-}
+      if (std::is_same<U,dcomplex>::value) {
+        out << "  Electric Octupole - Electric Dipole (Length) : "
+              "- Im[<< r_i r_j r_k; r_l >>] (AU)\n\n\n";
+        printOE(printRecIm, results.eo_ed_Polar);
+      }
+    }
 
-if (results.eo_eq_Polar) {
-  out << "  Electric Octupole - Electric Quadrupole (Length) : "
-         "- Re[<< r_i r_j r_k; r_l r_m >>] (AU)\n\n\n";
-  printOQ(printRecRe, results.eo_eq_Polar);
+    if (results.eo_eq_Polar) {
+      out << "  Electric Octupole - Electric Quadrupole (Length) : "
+            "- Re[<< r_i r_j r_k; r_l r_m >>] (AU)\n\n\n";
+      printOQ(printRecRe, results.eo_eq_Polar);
 
-  if (std::is_same<U,dcomplex>::value) {
-    out << "  Electric Octupole - Electric Quadrupole (Length) : "
-           "- Im[<< r_i r_j r_k; r_l r_m >>] (AU)\n\n\n";
-    printOQ(printRecIm, results.eo_eq_Polar);
-  }
-}
+      if (std::is_same<U,dcomplex>::value) {
+        out << "  Electric Octupole - Electric Quadrupole (Length) : "
+              "- Im[<< r_i r_j r_k; r_l r_m >>] (AU)\n\n\n";
+        printOQ(printRecIm, results.eo_eq_Polar);
+      }
+    }
 
-if (results.eo_eo_Polar) {
-  out << "  Electric Octupole - Electric Octupole (Length) : "
-         "- Re[<< r_i r_j r_k; r_l r_m r_n >>] (AU)\n\n\n";
-  printOO(printRecRe, results.eo_eo_Polar);
+    if (results.eo_eo_Polar) {
+      out << "  Electric Octupole - Electric Octupole (Length) : "
+            "- Re[<< r_i r_j r_k; r_l r_m r_n >>] (AU)\n\n\n";
+      printOO(printRecRe, results.eo_eo_Polar);
 
-  if (std::is_same<U,dcomplex>::value) {
-    out << "  Electric Octupole - Electric Octupole (Length) : "
-           "- Im[<< r_i r_j r_k; r_l r_m r_n >>] (AU)\n\n\n";
-    printOO(printRecIm, results.eo_eo_Polar);
-  }
-}
+      if (std::is_same<U,dcomplex>::value) {
+        out << "  Electric Octupole - Electric Octupole (Length) : "
+              "- Im[<< r_i r_j r_k; r_l r_m r_n >>] (AU)\n\n\n";
+        printOO(printRecIm, results.eo_eo_Polar);
+      }
+    }
 
 
     if(results.md_ed_Polar) {
