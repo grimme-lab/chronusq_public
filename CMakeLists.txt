@@ -33,6 +33,7 @@ post-SCF quantum mechanical methods."
 
 # Append local cmake directory to find CMAKE Modules
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+include(GNUInstallDirs)
 
 # -----------------------------------------------------------------------------
 # Options
@@ -108,13 +109,16 @@ if(ENABLE_COVERAGE)
   endif()
 endif()
 
-set(BASIS_PATH     "${PROJECT_SOURCE_DIR}/basis"     )
+set(BASIS_INSTALL_PATH "${CMAKE_INSTALL_FULL_DATADIR}/basis")
+set(BASIS_PATH         "${BASIS_INSTALL_PATH}")
 set(AUTHOR_PATH    "${PROJECT_SOURCE_DIR}/AUTHORS"   )
 
 configure_file(
   "${PROJECT_SOURCE_DIR}/include/chronusq_config.hpp.in"
   "${PROJECT_BINARY_DIR}/include/chronusq_config.hpp"
 )
+
+install(DIRECTORY basis/ DESTINATION ${CMAKE_INSTALL_DATADIR}/basis)
 
 # Recurse into subdirectories
 add_subdirectory(src)
